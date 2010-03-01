@@ -6,6 +6,7 @@ namespace Studyzy.IMEWLConverter
 {
     public class QQPinyin :  IWordLibraryImport, IWordLibraryExport
     {
+        public bool OnlySinglePinyin { get; set; }
         #region IWordLibraryExport 成员
 
         public string Export(WordLibraryList wlList)

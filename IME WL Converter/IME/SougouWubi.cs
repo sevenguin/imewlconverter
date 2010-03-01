@@ -5,7 +5,8 @@ using System.Text;
 namespace Studyzy.IMEWLConverter
 {
    public class SougouWubi:IWordLibraryImport,IWordLibraryExport
-    {
+   {
+       public bool OnlySinglePinyin { get; set; }
         #region IWordLibraryExport 成员
 
         public string Export(WordLibraryList wlList)

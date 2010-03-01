@@ -16,7 +16,7 @@ namespace Studyzy.IMEWLConverter
             get { return word; }
             set { word = value; }
         }
-        private int count;
+        private int count=1;
         /// <summary>
         /// 权值，打字出现次数
         /// </summary>

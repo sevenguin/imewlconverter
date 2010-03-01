@@ -48,6 +48,12 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IME\BaiduShouji.cs" />
     <Compile Include="IME\GooglePinyin.cs" />
     <Compile Include="Interface.cs" />
@@ -57,7 +63,8 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PinyinHelper.cs" />
+    <Compile Include="PinYinFactory.cs" />
+    <Compile Include="AllPinyin.cs" />
     <Compile Include="PinyinDic.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -67,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -99,6 +109,7 @@
     <Compile Include="IME\SougouPinyinWL.cs" />
     <Compile Include="IME\SougouWubi.cs" />
     <Compile Include="IME\QQShouji.cs" />
+    <Compile Include="SinglePinyin.cs" />
     <Compile Include="WordLibrary.cs" />
     <Compile Include="WordLibraryList.cs" />
   </ItemGroup>
@@ -107,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
+    <None Include="Resources\SinglePinYin.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

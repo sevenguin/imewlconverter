@@ -22,25 +22,29 @@ namespace Studyzy.IMEWLConverter
                 this.txbWLPath.Text = openFileDialog1.FileName;
             }
         }
-
+        IWordLibraryImport import;
+        IWordLibraryExport export;
         private void btnConvert_Click(object sender, EventArgs e)
         {
             try
             {
                 string wlTxt = ReadFile(txbWLPath.Text);
-                IWordLibraryImport wl1 = GetImportInterface(cbxFrom.Text);
+                import = GetImportInterface(cbxFrom.Text);
 
-                var wlList = wl1.Import(wlTxt);
-                IWordLibraryExport qq = GetExportInterface(cbxTo.Text);
+                import.OnlySinglePinyin = toolStripMenuItemIgnoreMutiPinyin.Checked;
 
+                var wlList = import.Import(wlTxt);
+                export = GetExportInterface(cbxTo.Text);
+                wlList = Filter(wlList);
                 richTextBox1.Clear();
-                richTextBox1.AppendText(qq.Export(wlList));
+                richTextBox1.AppendText(export.Export(wlList));
+                btnExport.Enabled = true;
                 if (MessageBox.Show("是否将导入的" + wlList.Count + "条词库保存到本地硬盘上？", "是否保存", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     saveFileDialog1.DefaultExt = ".txt";
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
-                        if (WriteFile(saveFileDialog1.FileName, qq.Encoding, richTextBox1.Text))
+                        if (WriteFile(saveFileDialog1.FileName, export.Encoding, richTextBox1.Text))
                         {
                             MessageBox.Show("保存成功，词库路径：" + saveFileDialog1.FileName);
                         }
@@ -56,6 +60,53 @@ namespace Studyzy.IMEWLConverter
                 MessageBox.Show(ex.Message);
             }
         }
+
+        /// <summary>
+        /// 词库过滤
+        /// </summary>
+        /// <param name="wlList"></param>
+        /// <returns></returns>
+        private WordLibraryList Filter(WordLibraryList wlList)
+        {
+            List<WordLibrary> temp = new List<WordLibrary>();
+            //if (toolStripMenuItemIgnoreMutiPinyin.Checked)//多音字过滤
+            //{
+            //    Dictionary<string, WordLibrary> dic = new Dictionary<string, WordLibrary>();
+            //    foreach (WordLibrary wl in wlList)
+            //    {
+            //        if (!dic.ContainsKey(wl.Word))
+            //        {
+            //            dic.Add(wl.Word, wl);
+            //        }
+            //    }
+            //    temp.AddRange(dic.Values);
+            //}
+            //else
+            //{
+                temp = wlList;
+            //}
+            int minLength = 1;
+            int maxLength = 9999;
+            if (toolStripMenuItemIgnoreSingleWord.Checked)//过滤单个字
+            {
+                minLength = 2;
+            }
+            if (toolStripMenuItemIgnoreLongWord.Checked)
+            {
+                maxLength = Convert.ToInt32(toolStripComboBoxIgnoreWordLength.Text);
+            }
+            if (minLength != 1 || maxLength != 9999)//设置了长度过滤
+            {
+                temp= temp.FindAll(delegate(WordLibrary wl)
+                {
+                    return wl.Word.Length >= minLength && wl.Word.Length <= maxLength;
+                });
+            }
+            WordLibraryList newList = new WordLibraryList();
+             newList.AddRange(temp);
+             return newList;
+
+        }
         private string ReadFile(string path)
         {
             using (StreamReader sr = new StreamReader(path,Encoding.Default))
@@ -67,7 +118,7 @@ namespace Studyzy.IMEWLConverter
         {
             try
             {
-                using (StreamWriter sw = new StreamWriter(path, true, coding))
+                using (StreamWriter sw = new StreamWriter(path,false, coding))
                 {
                     sw.Write(content);
                     sw.Close();
@@ -128,10 +179,37 @@ namespace Studyzy.IMEWLConverter
             }
         }
 
+
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("是否将文本框中的所有词条保存到本地硬盘上？", "是否保存", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                saveFileDialog1.DefaultExt = ".txt";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    if (WriteFile(saveFileDialog1.FileName, export.Encoding, richTextBox1.Text))
+                    {
+                        MessageBox.Show("保存成功，词库路径：" + saveFileDialog1.FileName);
+                    }
+                    else
+                    {
+                        MessageBox.Show("保存失败");
+                    }
+                }
+            }
+
+        }
         private void btnAbout_Click(object sender, EventArgs e)
         {
             AboutBox a = new AboutBox();
             a.Show();
         }
+        private void ToolStripMenuItemHelp_Click(object sender, EventArgs e)
+        {
+            HelpForm help = new HelpForm();
+            help.Show();
+        }
+
     }
 }

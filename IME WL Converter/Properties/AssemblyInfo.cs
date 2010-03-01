@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("深蓝词库转换小工具")]
-[assembly: AssemblyDescription("随手写的一个词库转换小工具，\r\n搜狗Txt词库的获得方法：\r\n首先从搜狗上下载词库，以计算机词汇大全【官方推荐】这个搜狗输入法细胞词库为例。\r\n该词库的页面地址是：http://pinyin.sogou.com/dict/cell.php?id=15117，记下这个ID “15117″，然后用任意一个下载工具，添加这个下载地址：http://pinyin.sogou.com/dict/download_txt.php?id=刚才记下的ID，这样就可以下载到该词库的 txt 格式文件")]
+[assembly: AssemblyDescription("随手写的一个词库转换小工具，希望大家喜欢，有问题请联系我：\r\nstudyzy@163.com")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("深蓝 http://studyzy.cnblogs.com")]
 [assembly: AssemblyProduct("深蓝词库转换小工具")]
