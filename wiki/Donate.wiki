@@ -1,0 +1,7 @@
+#labels Featured
+通过支付宝捐赠
+
+支付宝收款主页：<a href='https://me.alipay.com/studyzy'>https://me.alipay.com/studyzy</a>
+
+
+<p><a href='http://me.alipay.com/studyzy'><img src='https://img.alipay.com/sys/personalprod/style/mc/btn-index.png' /></a></p>
