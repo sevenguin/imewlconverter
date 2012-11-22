@@ -1,0 +1,17 @@
+#summary QQ拼音Windows版的词库导入导出方法
+
+= 介绍=
+
+QQ拼音输入法是个跨平台的输入法，在Windows，Mac，Android，iOS等系统中都有对应版本，这里介绍在Windows下导入和导出QQ拼音输入法的词库。
+
+
+= qpyd格式QQ分类词库=
+
+qpyd格式分类词库是一个二进制形式的文件词库，用户可以随意在[http://dict.py.qq.com/ QQ输入法官方网站]下载。本工具支持将qpyd格式词库解析并生成其他格式的词库，但是不支持将其他格式的词库生成qpyd格式的文件。
+[http://imewlconverter.googlecode.com/svn/wiki/qpyd.png]
+
+= txt格式中文词库=
+
+[http://imewlconverter.googlecode.com/svn/wiki/qqpy.png]
+
+=txt格式英文词库=
