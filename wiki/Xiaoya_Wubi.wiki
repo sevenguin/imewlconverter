@@ -1,0 +1,16 @@
+#summary 介绍小鸭五笔的词库导入导出
+#labels Phase-Deploy
+
+= 介绍=
+
+小鸭五笔与其他搜狗五笔、QQ五笔类似，支持五笔和拼音输入，五笔词库单独导入导出，下面主要介绍在小鸭五笔下的五笔词库导入导出方法。
+
+
+= 导入=
+
+[http://imewlconverter.googlecode.com/svn/wiki/xiaoya_import.png]
+
+
+= 导出=
+
+[http://imewlconverter.googlecode.com/svn/wiki/xiaoya_export.png]
