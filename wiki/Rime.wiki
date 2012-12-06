@@ -12,6 +12,8 @@ Rime中州韵输入法引擎是一个跨平台的开源输入法引擎，在Linu
 
 [http://images.cnblogs.com/cnblogs_com/studyzy/201211/201211021654503441.png]
 
+*注意：中州韵本身是一款繁体输入法，如果导入的词库是简体，那么可能会和默认的繁体词库重复，所以建议打开深蓝词库转换的简体转繁体选项，该选项在“高级设置”的“简繁体转换设置”里面。*
+
 = 鼠须管=
 
 该词库同样可以导入到Mac版的鼠须管输入法中，下载鼠须管的词库[http://code.google.com/p/rimeime/downloads/detail?name=rime_dict_manager_0.9.2_osx.zip&can=2&q= 导入工具]，然后按照导入工具的命令格式，将我们的搜狗拼音词库导入到鼠须管的命令为：
